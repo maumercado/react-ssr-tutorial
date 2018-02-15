@@ -4,7 +4,8 @@
     "description": "Server side tutorial project",
     "main": "index.js",
     "scripts": {
-        "dev:build:server": "webpack --config webpack.server.js",
+        "dev:server": "nodemon --watch build --exec \"node build/bundle.js\"",
+        "dev:build:server": "webpack --config webpack.server.js --watch",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "keywords": [
