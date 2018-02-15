@@ -6,14 +6,10 @@
     "scripts": {
         "dev:server": "nodemon --watch build --exec \"node build/bundle.js\"",
         "dev:build:server": "webpack --config webpack.server.js --watch",
+        "dev:build:client": "webpack --config webpack.client.js --watch",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
-    "keywords": [
-        "ssr",
-        "server",
-        "rendering",
-        "react"
-    ],
+    "keywords": ["ssr", "server", "rendering", "react"],
     "author": "Mauricio Mercado",
     "license": "ISC",
     "dependencies": {
