@@ -8,6 +8,8 @@ import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import Routes from "./Routes";
 
+import reducers from "./reducers";
+
 const store = createStore(reducers, {}, applyMiddleware(thunk));
 
 ReactDOM.hydrate(
