@@ -8,10 +8,20 @@ const app = express();
 
 app.use(express.static("public"));
 
-app.get("*", (req, res) => {
-    const store = createStore();
-    matchRoutes(Routes, req.path);
-    res.send(renderer(req, store));
+app.get("*", async (req, res) => {
+    try {
+        const store = createStore();
+
+        const promises = matchRoutes(Routes, req.path).map(({ route }) => {
+            return route.loadData ? route.loadData(store) : null;
+        });
+
+        await Promise.all(promises);
+
+        res.send(renderer(req, store));
+    } catch (err) {
+        res.send(err).status(500);
+    }
 });
 
 app.listen(3000, () => {
