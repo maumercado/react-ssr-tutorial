@@ -22,6 +22,10 @@ app.use(express.static("public"));
 app.get("*", async (req, res) => {
     const store = createStore(req);
 
+    // Because promises.all stops all it's promises when one fails
+    // we need to wrap the promises in resolve promises, so promise.all
+    // actually executes all requests, that way we are able to
+    // load all data possible of our app from our server.
     const promises = matchRoutes(Routes, req.path)
         .map(({ route }) => {
             return route.loadData ? route.loadData(store) : null;
