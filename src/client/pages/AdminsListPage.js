@@ -16,7 +16,7 @@ class AdminsList extends Component {
     render() {
         return (
             <div>
-                Protected list of admins:
+                <h2>Protected list of admins:</h2>
                 <ul>{this.renderAdmins()}</ul>
             </div>
         );
